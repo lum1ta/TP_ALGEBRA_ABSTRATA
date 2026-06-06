@@ -46,7 +46,6 @@ Exemplo de resultado:
 101 -> provavelmente primo
 91 -> composto
 
-========================================
 TÓPICO 4 - RAIZ QUADRADA MODULAR (TONELLI-SHANKS)
 
 São executados automaticamente os exemplos exigidos pelo trabalho:
@@ -63,7 +62,6 @@ Raiz 2 = ...
 
 Também é executado um caso sem solução para verificar a detecção de não-resíduos quadráticos.
 
-========================================
 TÓPICO 9 - RSA
 
 Ao iniciar os testes RSA, o programa solicita:
@@ -97,8 +95,6 @@ Teste 20: OK
 
 Todos os testes RSA passaram.
 
-========================================
 OBSERVAÇÃO
-==========
 
 Os resultados numéricos mudam a cada execução, pois os algoritmos utilizam números aleatórios para geração de candidatos primos e chaves RSA.
