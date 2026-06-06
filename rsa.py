@@ -180,7 +180,7 @@ def tonelli(n,p):
         return n
     
     if p % 4 == 3:
-        return pow(n ,( p - 1) // 4,p)
+        return pow(n ,( p + 1) // 4,p)
     
     q = p - 1
     s = 0
@@ -189,7 +189,7 @@ def tonelli(n,p):
         q //= 2
         s += 1
     z = 2
-    while (p - 1) % p != 0:
+    while legendre(z,p) != p - 1
         z += 1
 
     c = pow(z,q,p)
@@ -211,3 +211,35 @@ def tonelli(n,p):
         t = (t * c) % p
         m = i
     return R
+
+def verificar_raizes(a,p):
+
+    r1 = tonelli(a,p)
+    r2 = p - r1
+
+    print("Raiz 1 =", r1)
+    print("Raiz 2 =", r2)
+
+    print("Soma =", r1+r2)
+
+    assert (r1*r1) % p == a % p
+    assert (r2*r2) % p == a % p
+    assert r1 + r2 == p
+
+def testar_exemplo(a,p):
+
+    r1 = tonelli(a,p)
+    r2 = p - r1
+
+    print(f"\nResolvendo x² ≡ {a} (mod {p})")
+    print(f"Raiz 1 = {r1}")
+    print(f"Raiz 2 = {r2}")
+
+    print(f"r1² mod p = {(r1*r1)%p}")
+    print(f"r2² mod p = {(r2*r2)%p}")
+
+    print(f"r1 + r2 = {r1+r2}")
+
+# exemplos obrigatórios
+testar_exemplo(5,41)
+testar_exemplo(2,113)
