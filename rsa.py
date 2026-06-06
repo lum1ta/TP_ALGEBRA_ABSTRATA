@@ -159,4 +159,55 @@ def teste(k,cont,c):
     print(f"Aproximação 0,347k: {aproximacao:.2f}")
 #============================================================================
 
-#%%=============RSA==================
+#%%=============TONELLI SHANKS==================
+
+#verificação de solubilidade
+def legendre(a ,p):
+    #critério de euler
+    return pow(a ,( p - 1) // 2,p)
+
+#tonelli de fato
+def tonelli(n,p):
+    
+    if legendre(n,p) != 1:
+        raise ValueError("Não é resíduo quadrático")
+    #tenho que achar um q e um s tal que p - 1 = Q2^s
+
+    if n == 0:
+        return 0
+    
+    if p == 2:
+        return n
+    
+    if p % 4 == 3:
+        return pow(n ,( p - 1) // 4,p)
+    
+    q = p - 1
+    s = 0
+
+    while (q % 2 == 0):
+        q //= 2
+        s += 1
+    z = 2
+    while (p - 1) % p != 0:
+        z += 1
+
+    c = pow(z,q,p)
+    t = pow(n,q,p)
+    R = pow(n,(q +1) // 2,p)
+    m = s
+        
+    while t != 1 :
+
+        t2 = t
+
+        for i in range(m):
+            if t2 == 1:
+                break;
+            t2 = pow(t2,2,p)
+        b = pow(c, 1 << (m - i - 1), p)
+        R = (R * b) % p
+        c = (b * b) % p
+        t = (t * c) % p
+        m = i
+    return R
